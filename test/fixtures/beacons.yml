@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  serial: MyString
+  details: MyString
+  gps: MyString
+  channel: MyString
+  ip: MyString
+  mac: MyString
+  signal_strength: 1
+  visible_networks: MyString
+  ping: 9.99
+  up: 9.99
+  down: 9.99
+
+two:
+  serial: MyString
+  details: MyString
+  gps: MyString
+  channel: MyString
+  ip: MyString
+  mac: MyString
+  signal_strength: 1
+  visible_networks: MyString
+  ping: 9.99
+  up: 9.99
+  down: 9.99
