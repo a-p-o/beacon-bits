@@ -95,7 +95,7 @@
         console.log("success");
       },
       error: function (jqXHR, textStatus, errorThrown) {
-        console.log("failuer");
+        console.log("failure");
       }
 
     });
@@ -158,21 +158,13 @@
     marker.addListener('click', function () {
 
       var dataArray = {
-        "id": 1,
         "serial": "1234",
         "details": "Alex's",
-        "gps": null,
         "channel": null,
         "ip": "1234",
-        "mac": "1234",
-        "signal_strength": null,
-        "visible_networks": null,
-        "ping": null,
-        "up": null,
-        "down": null,
-        "created_at": "2016-03-05T15:48:42.712Z",
-        "updated_at": "2016-03-05T19:50:57.371Z"
+        "mac": "1234"
       };
+
       createWindow(dataArray["id"], dataArray["serial"], dataArray["details"], dataArray["channel"], dataArray["ip"], dataArray["mac"], dataArray["signal_strength"], dataArray["visible_networks"], dataArray["ping"], dataArray["up"], dataArray["down"], dataArray["updated_at"]);
       infoWindow.open(map, marker);
     });
