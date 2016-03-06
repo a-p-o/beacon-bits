@@ -32,10 +32,10 @@
       <% @beacons.each do |beacon| %>
         <tr>
           <td><%= link_to beacon.serial, beacon_path(beacon) %></td>
-          <td><%= beacon.signal_strength %></td>
-          <td><%= beacon.ping %></td>
-          <td><%= beacon.up %></td>
-          <td><%= beacon.down %></td>
+          <td><span class="badge"><%= beacon.signal_strength.nil? ? '?' : beacon.signal_strength %></span></td>
+          <td><span class="badge"><%= beacon.ping.nil? ? '?' : beacon.ping %></span></td>
+          <td><span class="badge"><%= beacon.up.nil? ? '?' : beacon.up %></span></td>
+          <td><span class="badge"><%= beacon.down.nil? ? '?' : beacon.down %></span></td>
           <td><%= link_to 'Edit', edit_beacon_path(beacon) %></td>
           <td><%= link_to 'Destroy', beacon_path(beacon), method: :delete, data: {confirm: 'Art you sure?'} %></td>
         </tr>
