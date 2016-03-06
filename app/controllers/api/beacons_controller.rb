@@ -19,7 +19,7 @@ module Api
     end
 
     def create
-      @beacon = Beacon.new(params.permit(:serial, :details, :channel, :ip, :mac, :urls))
+      @beacon = Beacon.new(params.permit(:serial, :details, :channel, :ip, :mac, :sites))
 
       if @beacon.save
         render json: @beacon
@@ -35,7 +35,7 @@ module Api
       @beacon = Beacon.find(params[:id])
 
       if @beacon.update(params.permit(:serial, :details, :gps, :channel, :ip, :mac, :signal_strength,
-                                      :visible_networks, :ping, :up, :down, :urls))
+                                      :visible_networks, :ping, :up, :down, :sites))
         render json: @beacon
       else
         render json: {

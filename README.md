@@ -20,7 +20,21 @@ bundle exec rake assets:precompile
 # Bundle for production deployment
 bundle install --deployment --without development test
 
+# Migrate database
+bundle exec rake db:migrate
+
 # Start passenger
+rvmsudo bundle exec passenger start
+```
+
+```
+cd /var/www/beaconbits/beacon/
+rvmsudo bundle exec passenger stop
+git pull
+
+bundle exec rake assets:precompile
+bundle install --deployment --without development test
+bundle exec rake db:migrate
 rvmsudo bundle exec passenger start
 ```
 

@@ -13,7 +13,7 @@ class BeaconsController < ApplicationController
   end
 
   def create
-    @beacon = Beacon.new(params.require(:beacon).permit(:serial, :details, :channel, :ip, :mac, :urls))
+    @beacon = Beacon.new(params.require(:beacon).permit(:serial, :details, :channel, :ip, :mac, :sites))
 
     if @beacon.save
       redirect_to @beacon
@@ -29,7 +29,7 @@ class BeaconsController < ApplicationController
   def update
     @beacon = Beacon.find(params[:id])
 
-    if @beacon.update(params.require(:beacon).permit(:serial, :details, :channel, :ip, :mac, :urls))
+    if @beacon.update(params.require(:beacon).permit(:serial, :details, :channel, :ip, :mac, :sites))
 
       redirect_to @beacon
     else

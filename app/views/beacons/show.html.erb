@@ -37,12 +37,12 @@
 
 <% end %>
 
-<h4>URLs</h4>
+<h4>Sites</h4>
 
-<% if @beacon.urls? %>
+<% if @beacon.sites? %>
 
   <ul>
-    <% @beacon.urls.split(',').each do |url| %>
+    <% @beacon.sites.split(',').each do |url| %>
       <li><code><%= url %></code></li>
     <% end %>
   </ul>
