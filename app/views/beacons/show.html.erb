@@ -1,57 +1,54 @@
-<p>
-  <strong>Serial:</strong>
-  <%= @beacon.serial %>
-</p>
+<h1>Beacon <code><%= @beacon.serial %></code> <small><%= link_to 'Edit', edit_beacon_path(@beacon) %></small></h1>
 
-<p>
-  <strong>Details:</strong>
-  <%= @beacon.details %>
-</p>
+<table class="table">
+  <tr>
+    <th>Details</th>
+    <th>Channel</th>
+    <th>IP</th>
+    <th>MAC</th>
+    <th>Signal</th>
+    <th>Ping</th>
+    <th>Up</th>
+    <th>Down</th>
+  </tr>
+  <tr>
+    <td><%= @beacon.details %></td>
+    <td><%= @beacon.channel %></td>
+    <td><code><%= @beacon.ip %></code></td>
+    <td><code><%= @beacon.mac %></code></td>
+    <td><span class="badge"><%= @beacon.signal_strength.nil? ? '?' : @beacon.signal_strength %></span></td>
+    <td><span class="badge"><%= @beacon.ping.nil? ? '?' : @beacon.ping %></span></td>
+    <td><span class="badge"><%= @beacon.up.nil? ? '?' : @beacon.up %></span></td>
+    <td><span class="badge"><%= @beacon.down.nil? ? '?' : @beacon.down %></span></td>
+  </tr>
 
-<p>
-  <strong>Serial</strong>
-  <%= @beacon.serial %>
-</p>
-<p>
-  <strong>Details</strong>
-  <%= @beacon.details %>
-</p>
-<p>
-  <strong>GPS</strong>
-  <%= @beacon.gps %>
-</p>
-<p>
-  <strong>Channel</strong>
-  <%= @beacon.channel %>
-</p>
-<p>
-  <strong>IP</strong>
-  <%= @beacon.ip %>
-</p>
-<p>
-  <strong>MAC</strong>
-  <%= @beacon.mac %>
-</p>
-<p>
-  <strong>Signal</strong>
-  <%= @beacon.signal_strength %>
-</p>
-<p>
-  <strong>Visible Networks</strong>
-  <%= @beacon.visible_networks %>
-</p>
-<p>
-  <strong>Ping</strong>
-  <%= @beacon.ping %>
-</p>
-<p>
-  <strong>Up</strong>
-  <%= @beacon.up %>
-</p>
-<p>
-  <strong>Down</strong>
-  <%= @beacon.down %>
-</p>
+</table>
 
-<%= link_to 'Edit', edit_beacon_path(@beacon) %>
-<%= link_to 'Back', beacons_path %>
+<% unless @beacon.gps.nil? %>
+  <h4>Location</h4>
+
+  <p><%= @beacon.gps %></p>
+<% end %>
+
+<% unless @beacon.visible_networks.nil? %>
+  <h4>Other Visible Networks</h4>
+
+  <p><%= @beacon.visible_networks %></p>
+
+<% end %>
+
+<h4>URLs</h4>
+
+<% if @beacon.urls.nil? %>
+
+  <%= link_to 'Add some', edit_beacon_path(@beacon), :class => 'btn btn-primary' %>
+
+<% else %>
+
+  <ul>
+    <% @beacon.urls.split(',').each do |url| %>
+      <li><code><%= url %></code></li>
+    <% end %>
+  </ul>
+
+<% end %>
