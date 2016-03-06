@@ -46,20 +46,19 @@
 
 <script type="text/javascript">
 
-  function update()
-  {
-	$.ajax({
-		url: 'http://52.91.76.141/api/beacons/3',
-		type: 'GET',
-			}).done(function (msg){
-				$('#3').$('.ping').val(msg.ping);
-				$('#3').$('.down').val(msg.down);
-				});
+  function update() {
+    $.ajax({
+      url: '/api/beacons/1',
+      type: 'GET'
+    }).done(function (msg) {
+      $('#3').find('.ping').val(msg.ping);
+      $('#3').find('.down').val(msg.down);
+    });
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    window.setInteral(5000, update);
-  };
+    window.setInterval(update, 5000);
+  });
 
   // Enable Bootstrap tabs
   $('#beacon-tabs').find('> a').click(function (e) {
