@@ -51,8 +51,10 @@
       url: '/api/beacons/1',
       type: 'GET'
     }).done(function (msg) {
-      $('#beacon-1').find('.ping').find('.badge')[0].innerHTML = msg.ping;
-      $('#beacon-1').find('.ping').find('.badge')[0].innerHTML = msg.down;
+      $('#beacon-1').find('.signal').find('.badge')[0].innerHTML = msg.signal_strength || '?';
+      $('#beacon-1').find('.ping').find('.badge')[0].innerHTML = msg.ping || '?';
+      $('#beacon-1').find('.up').find('.badge')[0].innerHTML = msg.up || '?';
+      $('#beacon-1').find('.down').find('.badge')[0].innerHTML = msg.down || '?';
     });
   }
 
