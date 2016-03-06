@@ -11,13 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305135409) do
+ActiveRecord::Schema.define(version: 20160305150137) do
 
-  create_table "articles", force: :cascade do |t|
-    t.string   "title"
-    t.text     "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "beacons", force: :cascade do |t|
+    t.string   "serial"
+    t.string   "details"
+    t.string   "gps"
+    t.string   "channel"
+    t.string   "ip"
+    t.string   "mac"
+    t.integer  "signal_strength"
+    t.string   "visible_networks"
+    t.decimal  "ping"
+    t.decimal  "up"
+    t.decimal  "down"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
 end

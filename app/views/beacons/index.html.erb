@@ -1,0 +1,27 @@
+<%= link_to 'New beacon', new_beacon_path %>
+
+<h1>Your Beacons</h1>
+
+<table>
+  <tr>
+    <th>Serial</th>
+    <th>Signal</th>
+    <th>Ping</th>
+    <th>Up</th>
+    <th>Down</th>
+    <th colspan="3"></th>
+  </tr>
+
+  <% @beacons.each do |beacon| %>
+    <tr>
+      <td><%= beacon.serial %></td>
+      <td><%= beacon.signal_strength %></td>
+      <td><%= beacon.ping %></td>
+      <td><%= beacon.up %></td>
+      <td><%= beacon.down %></td>
+      <td><%= link_to 'Show', beacon_path(beacon) %></td>
+      <td><%= link_to 'Edit', edit_beacon_path(beacon) %></td>
+      <td><%= link_to 'Destroy', beacon_path(beacon), method: :delete, data: {confirm: 'Art you sure?'} %></td>
+    </tr>
+  <% end %>
+</table>

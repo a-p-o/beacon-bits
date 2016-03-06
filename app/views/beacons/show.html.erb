@@ -1,0 +1,57 @@
+<p>
+  <strong>Serial:</strong>
+  <%= @beacon.serial %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @beacon.details %>
+</p>
+
+<p>
+  <strong>Serial</strong>
+  <%= @beacon.serial %>
+</p>
+<p>
+  <strong>Details</strong>
+  <%= @beacon.details %>
+</p>
+<p>
+  <strong>GPS</strong>
+  <%= @beacon.gps %>
+</p>
+<p>
+  <strong>Channel</strong>
+  <%= @beacon.channel %>
+</p>
+<p>
+  <strong>IP</strong>
+  <%= @beacon.ip %>
+</p>
+<p>
+  <strong>MAC</strong>
+  <%= @beacon.mac %>
+</p>
+<p>
+  <strong>Signal</strong>
+  <%= @beacon.signal_strength %>
+</p>
+<p>
+  <strong>Visible Networks</strong>
+  <%= @beacon.visible_networks %>
+</p>
+<p>
+  <strong>Ping</strong>
+  <%= @beacon.ping %>
+</p>
+<p>
+  <strong>Up</strong>
+  <%= @beacon.up %>
+</p>
+<p>
+  <strong>Down</strong>
+  <%= @beacon.down %>
+</p>
+
+<%= link_to 'Edit', edit_beacon_path(@beacon) %>
+<%= link_to 'Back', beacons_path %>
