@@ -22,6 +22,10 @@ class BeaconsController < ApplicationController
     end
   end
 
+  def edit
+    @beacon = Beacon.find(params[:id])
+  end
+
   def update
     @beacon = Beacon.find(params[:id])
 
