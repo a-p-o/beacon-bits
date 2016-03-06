@@ -7,13 +7,13 @@
 </style>
 
 <!-- Nav tabs -->
-<ul class="nav nav-tabs" role="tablist">
+<ul class="nav nav-tabs" id="beacon-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#map-tab" aria-controls="map-tab" role="tab" data-toggle="tab">Map</a></li>
   <li role="presentation"><a href="#list-tab" aria-controls="list-tab" role="tab" data-toggle="tab">List</a></li>
 </ul>
 
 <!-- Tab panes -->
-<div id="beacon-tabs" class="tab-content">
+<div class="tab-content">
   <div role="tabpanel" class="tab-pane fade in active" id="map-tab">
     <div id="map"></div>
   </div>
@@ -46,7 +46,7 @@
 
 <script type="text/javascript">
   // Enable Bootstrap tabs
-  $('#beacon-tabs').find('a').click(function (e) {
+  $('#beacon-tabs').find('> a').click(function (e) {
     e.preventDefault();
     $(this).tab('show')
   });
