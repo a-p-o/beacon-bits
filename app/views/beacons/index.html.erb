@@ -1,36 +1,56 @@
-<%= link_to 'New beacon', new_beacon_path %>
-
 <h1>Your Beacons</h1>
 
-<div id="map"></div>
+<style>
+  #map {
+    height: 600px;
+  }
+</style>
 
-<table>
-  <tr>
-    <th>Serial</th>
-    <th>Signal</th>
-    <th>Ping</th>
-    <th>Up</th>
-    <th>Down</th>
-    <th colspan="3"></th>
-  </tr>
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#map-tab" aria-controls="map-tab" role="tab" data-toggle="tab">Map</a></li>
+  <li role="presentation"><a href="#list-tab" aria-controls="list-tab" role="tab" data-toggle="tab">List</a></li>
+</ul>
 
-  <% @beacons.each do |beacon| %>
-    <tr>
-      <td><%= beacon.serial %></td>
-      <td><%= beacon.signal_strength %></td>
-      <td><%= beacon.ping %></td>
-      <td><%= beacon.up %></td>
-      <td><%= beacon.down %></td>
-      <td><%= link_to 'Show', beacon_path(beacon) %></td>
-      <td><%= link_to 'Edit', edit_beacon_path(beacon) %></td>
-      <td><%= link_to 'Destroy', beacon_path(beacon), method: :delete, data: {confirm: 'Art you sure?'} %></td>
-    </tr>
-  <% end %>
-</table>
+<!-- Tab panes -->
+<div id="beacon-tabs" class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active" id="map-tab">
+    <div id="map"></div>
+  </div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZ_mEUWjFjtN2vOzLEXjiX5JH1TTZOdoQ&callback=initMap" async defer></script>
+  <div role="tabpanel" class="tab-pane fade" id="list-tab">
+    <table class="table">
+      <tr>
+        <th>Serial</th>
+        <th>Signal</th>
+        <th>Ping</th>
+        <th>Up</th>
+        <th>Down</th>
+        <th colspan="2"></th>
+      </tr>
+
+      <% @beacons.each do |beacon| %>
+        <tr>
+          <td><%= link_to beacon.serial, beacon_path(beacon) %></td>
+          <td><%= beacon.signal_strength %></td>
+          <td><%= beacon.ping %></td>
+          <td><%= beacon.up %></td>
+          <td><%= beacon.down %></td>
+          <td><%= link_to 'Edit', edit_beacon_path(beacon) %></td>
+          <td><%= link_to 'Destroy', beacon_path(beacon), method: :delete, data: {confirm: 'Art you sure?'} %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
 
 <script type="text/javascript">
+  // Enable Bootstrap tabs
+  $('#beacon-tabs').find('a').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show')
+  });
+
   var map;
   var infoWindow;
 
@@ -86,7 +106,7 @@
       center: {lat: 29.0358, lng: -81.2999},
       zoom: 17
     });
-    addMarker();
+//    addMarker();
     createMarker();
     pullMarkers();
   }
@@ -107,7 +127,7 @@
         '<h5> upload: ' + up + ' </h5>' +
         '<h5> download: ' + down + '</h5>' +
         '<h5> update Time: ' + updateTime + ' </h5>' +
-    '</div></div>';
+        '</div></div>';
 
     infoWindow = new google.maps.InfoWindow({
       content: contentString
@@ -143,3 +163,5 @@
     });
   }
 </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZ_mEUWjFjtN2vOzLEXjiX5JH1TTZOdoQ&callback=initMap" async defer></script>
