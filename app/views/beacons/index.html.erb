@@ -30,14 +30,14 @@
       </tr>
 
       <% @beacons.each do |beacon| %>
-        <tr id="<%= beacon.id %>">
+        <tr id="beacon-<%= beacon.id %>">
           <td class="serial"><%= link_to beacon.serial, beacon_path(beacon) %></td>
           <td class="signal-strength"><span class="badge"><%= beacon.signal_strength.nil? ? '?' : beacon.signal_strength %></span></td>
           <td class="ping"><span class="badge"><%= beacon.ping.nil? ? '?' : beacon.ping %></span></td>
           <td class="up"><span class="badge"><%= beacon.up.nil? ? '?' : beacon.up %></span></td>
           <td class="down"><span class="badge"><%= beacon.down.nil? ? '?' : beacon.down %></span></td>
           <td><%= link_to 'Edit', edit_beacon_path(beacon) %></td>
-          <td><%= link_to 'Destroy', beacon_path(beacon), method: :delete, data: {confirm: 'Art you sure?'} %></td>
+          <td><%= link_to 'Destroy', beacon_path(beacon), method: :delete, data: {confirm: 'Are you sure?'} %></td>
         </tr>
       <% end %>
     </table>
@@ -51,8 +51,8 @@
       url: '/api/beacons/1',
       type: 'GET'
     }).done(function (msg) {
-      $('#3').find('.ping').val(msg.ping);
-      $('#3').find('.down').val(msg.down);
+      $('#beacon-1').find('.ping').val(msg.ping);
+      $('#beacon-1').find('.down').val(msg.down);
     });
   }
 
