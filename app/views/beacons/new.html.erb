@@ -53,6 +53,16 @@
 
   <br>
 
+  <div class="form-group">
+    <label id="urls">
+      <%= :urls.upcase %>
+      <%= f.text_area :urls, {:class => 'form-control',
+                              :placeholder => 'www.xkcd.com, news.ycombinator.com'} %>
+    </label>
+  </div>
+
+  <br>
+
   <div class="input-group">
     <%= f.submit :class => 'btn btn-primary' %>
   </div>
