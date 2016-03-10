@@ -21,7 +21,7 @@ bundle exec rake assets:precompile
 bundle install --deployment --without development test
 
 # Migrate database
-bundle exec rake db:migrate
+bundle exec rake db:migrate RAILS_ENV=production
 
 # Start passenger
 rvmsudo bundle exec passenger start
